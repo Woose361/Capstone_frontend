@@ -8,7 +8,7 @@
 - Node.JS
 
 ## Link to BackEnd Repository
-https://github.com/comeaudc/mern_Todo_BE
+https://github.com/woose361/Capstone_backend
 
 ## Setting Up the Backend
 1. git clone **url repo string**
