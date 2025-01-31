@@ -39,4 +39,7 @@ const MovieDetail = ({ addToFavorites }) => {
             </div>
         );
     };
+
+    
     export default MovieDetail; 
+

@@ -22,9 +22,10 @@ const Form = ({ setMovies }) => {
     } finally {
       setLoading(false);
     }
-  };
+  
 
     return (
+
       <div className='form-container'>
         <form onSubmit={handleSubmit}>
            <input
@@ -39,5 +40,5 @@ const Form = ({ setMovies }) => {
            {loading && <p>Loading...</p>}
             </div>
     );
-  
-export default Form;
+  };
+  export default Form;
