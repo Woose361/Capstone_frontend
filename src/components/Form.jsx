@@ -16,13 +16,13 @@ const Form = ({ setMovies }) => {
 
     try {
       const data = await fetchMovies(searchQuery);
-      setMovies(data.results);
+      setMovies(data);
     } catch (err) {
       console.error("Error fetching movies: ", err);
     } finally {
       setLoading(false);
     }
-  
+  };
 
     return (
 
@@ -30,7 +30,7 @@ const Form = ({ setMovies }) => {
         <form onSubmit={handleSubmit}>
            <input
            type="text"
-           placeholder='Search for movie...'
+           placeholder="Search for movie..."
            value={searchQuery}
            onChange={handleChange}
            />
@@ -40,5 +40,5 @@ const Form = ({ setMovies }) => {
            {loading && <p>Loading...</p>}
             </div>
     );
-  };
+  
   export default Form;

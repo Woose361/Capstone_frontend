@@ -8,14 +8,26 @@ import { fetchMovies } from './services/apiService.mjs';
 
 
 
-const App = () =>{
+const App = () => {
   const [movies, setMovies] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(storedFavorites);
-  }, []);
+  
+
+  const getMovies = async () => {
+    try { 
+      const movies = await fetchMovies();
+      setMovies(movies);
+    } catch (err) {
+      console.error("Error fetching movies: ", err);
+    }
+  };
+
+  getMovies();
+}, []);
 
     // Add movies to favorites
   const addToFavorites = (movie) => {
@@ -39,23 +51,19 @@ const App = () =>{
       <nav>
         <Link to="/">Home</Link>
         <Link to="/favorites">Favorites</Link>
-        </nav>      
-
+        </nav>    ter  
+       
       <Routes>
-        <Route
-        path="/" element={<Form setMovies={setMovies} />} 
-        />
-        <Route
-        path="/favorites" element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites}/>}
-        />
-
+        <Route path="/" element={<Form setMovies={setMovies} />}  />
+        <Route path="/favorites" element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites} />}/>
+        <Route path="/movies/:id" element={<MovieDetail addToFavorites={addToFavorites} />} />
+        
+      </Routes>
 
       <Route
-      path="/movies/:id" element={<MovieDetail addToFavorites={addToFavorites} />}
+      path="/" 
+      element={<MovieList movies={movies} addToFavorites={addToFavorites} />}
       />
-      
-      </Routes>
-      <MovieList movies={movies} addToFavorites={addToFavorites} />
     </div>
     </Router>
   );

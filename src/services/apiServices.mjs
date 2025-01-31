@@ -4,9 +4,9 @@ const API_KEY = "ab881e0e86fe5334e70ca49928474d21";
 const BASE_URL = "https://api.themoviedb.org/3";
 
 
- export const fetchAMovies = async (query) => {
+ export const fetchMovies = async  (query) => {
   try {
-    const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=1`
+    const response = await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=1`
 
     );
     const data = await response.json();
@@ -18,14 +18,14 @@ const BASE_URL = "https://api.themoviedb.org/3";
 };
 
 export const fetchMoviesDetails = async (id) => {
-    
   try {
-    const response = await fetch (`${BASE_URL}/movie/${id}?api_key=${API_KEY}`
-
-    );
+    const response = await axios.get(`${BASE_URL}/movie/${id}`,{ 
+      params: {
+      api_key: API_KEY, 
+    },
+    });
     
-    const data = await response.json();
-    return data;
+    return response.data;
   } catch (err) {
     console.error("Error fetching movies: ", err);
   return null;

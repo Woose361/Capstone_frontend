@@ -1,9 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { fetchMovieDetails } from '../services/apiService.mjs';
 
 
-const MovieDetail = ({ addToFavorites }) => {
+const MovieDetails = ({ addToFavorites }) => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -41,5 +40,5 @@ const MovieDetail = ({ addToFavorites }) => {
     };
 
     
-    export default MovieDetail; 
+    export default MovieDetails;
 
