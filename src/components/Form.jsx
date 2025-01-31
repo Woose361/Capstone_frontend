@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { fetchAMovies } from '../services/apiServices.mjs';
+import { fetchMovies } from '../services/apiServices.mjs';
 
 const Form = ({ setMovies }) => {
   const [searchQuery, setSearchQuery] = useState('');

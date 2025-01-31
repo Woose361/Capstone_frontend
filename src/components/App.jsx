@@ -46,7 +46,7 @@ const App = () =>{
         path="/" element={<Form setMovies={setMovies} />} 
         />
         <Route
-        path="/Favorites" element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites}/>}
+        path="/favorites" element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites}/>}
         />
 
 
